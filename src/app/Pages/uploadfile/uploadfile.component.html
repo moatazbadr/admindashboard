@@ -1,0 +1,64 @@
+<div class="file-list-container">
+ <div class="header">
+  <div class=""></div>
+  <h2>Uploaded Files</h2>
+
+  <!-- Upload Button -->
+  <button class="btn upload-btn" (click)="openUploadModal()">Upload a file</button>
+ </div>
+
+  <!-- Upload Modal (Hidden by Default) -->
+  <div class="modal-overlay" *ngIf="showUploadModal">
+    <div class="modal-content">
+      <h3>Upload New File</h3>
+
+      <form (submit)="uploadFile()">
+        <label for="fileName">File Name:</label>
+        <input type="text" id="fileName" [(ngModel)]="fileName" name="fileName" required>
+
+        <label for="fileInput">Choose File:</label>
+        <input type="file" id="fileInput" (change)="onFileSelected($event)" required>
+
+        <div class="modal-buttons">
+          <button type="submit" class="btn submit-btn">Upload</button>
+          <button type="button" class="btn cancel-btn" (click)="closeUploadModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- File List -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>File Name</th>
+        <th>Size</th>
+        <th>Upload Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of displayedFiles">
+        <td>{{ file.id }}</td>
+        <td>{{ file.fileName }}</td>
+        <td>{{ file.size }}</td>
+        <td>{{ file.uploadeDate }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm rounded-5" type="button" (click)="deleteFile(file.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="files.length === 0" class="no-files">No files uploaded yet.</p>
+
+  <!-- Pagination Controls -->
+  <div class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>

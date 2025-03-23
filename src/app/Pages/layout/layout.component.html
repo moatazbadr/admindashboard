@@ -1,0 +1,50 @@
+<body>
+  <div class="header col-12">
+    <h2 class="mt-4">Welcome Back Admin <span id="AdminName">{{AdminUser.userName}}</span></h2>
+  </div>
+
+  <div class="main-container">
+
+  <div class="side-nav " >
+    <div class="services">
+      <h3>services</h3>
+    </div>
+
+    <div class="mb-3 mt-3" >
+      <button (click)="getDashboard()">MY Dashboard</button>
+    </div>
+
+    <div class="mb-3 mt-3" >
+      <button (click)="getCourses()">Courses</button>
+    </div>
+
+  <div class="mb-3 mt-3">
+    <button (click)="getDoctors()">Doctors</button>
+   </div>
+
+  <div class="mb-3 mt-3">
+    <button (click)="getStudents()">Students</button>
+  </div>
+
+  <div class="mb-3 mt-3">
+    <button (click)="getmManageCourses()">Register Course</button>
+  </div>
+
+  <div class="mb-3 mt-3">
+    <button (click)="getRegisterCourse()">Register doctor</button>
+  </div>
+  <div class="mb-3 mt-3">
+    <button (click)="getuploadfile()">Mange files</button>
+  </div>
+  <div class="mb-3 mt-3">
+    <button (click)="logout()">log out</button>
+  </div>
+
+</div>
+<div  class="content">
+<router-outlet  />
+</div>
+</div>
+</body>
+
+

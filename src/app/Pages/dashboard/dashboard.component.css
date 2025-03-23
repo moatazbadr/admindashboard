@@ -1,0 +1,64 @@
+/* Dashboard Main Container */
+.dashboard-container {
+  text-align: center;
+  min-height: 100%;
+}
+
+/* Dashboard Title */
+.dashboard-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-transform: uppercase;
+}
+
+/* Stats Container */
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Stat Card */
+.stat-card {
+  width: 200px;
+  height: 120px;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.stat-card:hover {
+  transform: scale(1.05);
+}
+
+/* Icon Styling */
+.icon {
+  font-size: 35px;
+  margin-bottom: 8px;
+}
+
+/* Colors for each section */
+.students {
+  background: linear-gradient(135deg, #17a2b8, #00d4ff);
+}
+
+.doctors {
+  background: linear-gradient(135deg, #28a745, #72e24b);
+}
+
+.courses {
+  background: linear-gradient(135deg, #ffc107, #ffdd57);
+}

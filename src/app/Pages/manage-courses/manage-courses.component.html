@@ -1,0 +1,83 @@
+<div class="container">
+  <h2 class="title">Add New Course</h2>
+
+  <form [formGroup]="courseForm" (ngSubmit)="submitCourseToApi()">
+
+    <div class="form-group">
+      <label>Course Code</label>
+      <input type="text" class="form-control" formControlName="courseCode" placeholder="Enter Course Code">
+      <small class="text-danger" *ngIf="courseForm.controls['courseCode'].invalid && courseForm.controls['courseCode'].touched">
+        Course Code is required (min 3 characters).
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Course Description</label>
+      <textarea class="form-control" formControlName="courseDescription" placeholder="Enter Course Description"></textarea>
+      <small class="text-danger" *ngIf="courseForm.controls['courseDescription'].invalid && courseForm.controls['courseDescription'].touched">
+        Course Description is required.
+      </small>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col">
+        <label>Course Hours</label>
+        <input type="number" class="form-control" formControlName="course_hours" placeholder="Hours of course">
+      </div>
+
+      <div class="form-group col">
+        <label>Course Level</label>
+        <input type="number" class="form-control" formControlName="course_level" placeholder="Level of course">
+      </div>
+
+      <div class="form-group col">
+        <label>Course Semester</label>
+        <input type="number" class="form-control" formControlName="course_semster" placeholder="Semester of course">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Has Lab?</label>
+      <input type="checkbox" formControlName="has_Lab" placeholder="has_Lab">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col">
+        <label>Midterm Marks</label>
+        <input type="number" class="form-control" formControlName="midTerm" placeholder="Midterm Marks">
+      </div>
+
+      <div class="form-group col">
+        <label>Oral Marks</label>
+        <input type="number" class="form-control" formControlName="oral" placeholder="Oral Marks">
+      </div>
+
+      <div class="form-group col">
+        <label>Final Exam Marks</label>
+        <input type="number" class="form-control" formControlName="finalExam" placeholder="Final Exam Marks">
+      </div>
+
+      <div class="form-group col">
+        <label>Lab Marks</label>
+        <input type="number" class="form-control" formControlName="lab" placeholder="Lab Marks">
+      </div>
+
+      <div class="form-group col">
+        <label>Total Marks</label>
+        <input type="number" class="form-control" formControlName="totalMark" placeholder="Total Marks">
+      </div>
+    </div>
+
+    <button
+    type="submit"
+    class="btn-submit"
+    [disabled]="courseForm.invalid || isLoading"
+    [ngClass]="{ 'disabled-btn': courseForm.invalid || isLoading }">
+    {{ isLoading ? 'Submitting...' : 'Submit Course' }}
+  </button>
+
+
+    <p class="text-success" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</div>

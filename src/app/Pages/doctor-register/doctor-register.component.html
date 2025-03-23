@@ -1,0 +1,36 @@
+<div class="register-container">
+  <h2>Register Doctor</h2>
+
+  <form [formGroup]="doctorForm" (ngSubmit)="registerDoctor()">
+    <div class="form-group">
+      <label for="userName">Doctor Name</label>
+      <input type="text" id="userName" formControlName="userName" class="form-control" placeholder="Enter Doctor Name" />
+      <small *ngIf="doctorForm.controls['userName'].invalid && doctorForm.controls['userName'].touched" class="error">
+        Name is required (min 3 characters).
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter Email" />
+      <small *ngIf="doctorForm.controls['email'].invalid && doctorForm.controls['email'].touched" class="error">
+        Valid email is required.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter Password" />
+      <small *ngIf="doctorForm.controls['password'].invalid && doctorForm.controls['password'].touched" class="error">
+        Password must be at least 8 characters.
+      </small>
+    </div>
+
+    <button type="submit" class="btn" [disabled]="doctorForm.invalid || isLoading">
+      {{ isLoading ? 'Registering...' : 'Register' }}
+    </button>
+
+    <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </form>
+</div>

@@ -1,0 +1,45 @@
+<!-- Search Input -->
+<!-- Add Course Button -->
+<div class="form">
+  <div class="search-form">
+    <form class="form">
+      <input
+        type="text"
+        placeholder="Search for a course by Course Code"
+        [(ngModel)]="searchText"
+        name="searchInput"
+        (input)="searchCourses()"
+        class="search-input"
+      >
+    </form>
+
+      <button type="button" class="btn btn-danger del-btn" (click)="removeCourse()">Delete Course </button>
+
+</div>
+
+
+
+
+<!-- Courses List with Pagination -->
+<div class="cards-container">
+  <div class="card" *ngFor="let Course of filteredCourses | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+    <div class="card-body">
+      <div class="Course-Code">
+        <h5>{{ Course.courseCode }}</h5>
+      </div>
+      <p class="card-text">{{ Course.courseDescription }}</p>
+      <p class="Course-Hours">Credit Hours: {{ Course.courseHours }}</p>
+      <span class="Course-Doc">
+        <span id="Assigned">Assigned Doctor</span> :
+        <span [ngClass]="{ 'not-assigned': Course.doctors.length <= 0 }" class="not-assigned">
+          {{ Course.doctors.length == 0 ? 'Not Assigned' :Course.doctors}}
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<div class="floor">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

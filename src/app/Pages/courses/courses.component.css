@@ -1,0 +1,286 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box    ;
+}
+
+/* Main container for the cards */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust width dynamically */
+  gap: 20px;
+  justify-items: center; /* Ensures cards are centered */
+  align-items: start; /* Ensures even spacing */
+}
+
+
+/* Card styling */
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 14rem;
+  width: 100%;
+  max-width: 280px;
+}
+
+/* Card hover effect */
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+/* Card body */
+.card-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Course code section */
+.Course-Code {
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px 5px 0 0;
+}
+
+
+.card-text {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+
+.Course-Doc {
+  font-size: 14px;
+  font-weight: bold;
+  color: #0077b6;
+  margin-top: auto;
+}
+
+#Assigned{
+  color: rgb(109, 109, 109);
+}
+.not-assigned {
+  color: red;
+  font-weight: bold;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #00b4d8;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.search-input:focus {
+  border-color: #0077b6;
+  box-shadow: 0px 0px 8px rgba(0, 183, 255, 0.6);
+}
+
+.floor {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  padding: 10px 0;
+  text-align: center;
+
+}
+.add-button {
+  background-color: #0077b6;
+  color: whitesmoke;
+  border-radius: 5px;
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Effect */
+.add-button:hover {
+  background-color: #0096c7;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 119, 182, 0.4);
+}
+
+/* Click/Press Effect */
+.add-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0, 119, 182, 0.3);
+}
+
+/* Ripple Effect */
+.add-button::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: transform 0.4s ease-out;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.add-button:focus::before {
+  transform: translate(-50%, -50%) scale(3);
+  opacity: 0;
+}
+/* Modal Background */
+/* Modal Background */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  width: 450px;
+  max-width: 90%;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.close-button:hover {
+  color: red;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Labels */
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #0077b6;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 119, 182, 0.3);
+}
+
+/* Buttons */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.add-button {
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.add-button:hover {
+  background-color: #005b8e;
+  transform: scale(1.05);
+}
+
+.close-button {
+  background-color: #ccc;
+  color: black;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.close-button:hover {
+  background-color: #bbb;
+  transform: scale(1.05);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.del-btn{
+  display: block;
+  margin-left: 1rem;
+  padding: 0.5rem;
+}
